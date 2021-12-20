@@ -200,7 +200,7 @@ def gui():
         [sg.Text('Add Event:')],
         [sg.Text('Event Name:')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventName')],
-        [sg.Text('Time:')],
+        [sg.Text('Time: (ex. 0700)')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventTime')],
         [sg.Text('Location')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventLocation')],
