@@ -111,7 +111,12 @@ def gen_pod(window, values):
         counter = 0
         for value in arr_toAdd:
             #print(value)
-            stripped = int(value.split(':')[0])
+            try:
+                stripped = int(value.split(':')[0])
+            except ValueError:
+                hasError = True
+                window['error_message'].update('Invalid Schedule formatting. Please input in the format specified')
+                return 'SCHEDULE_ERROR\n'
             #print(f"stripped time to slot: {stripped}")
             counter_2 = 0
             for x in arr_added:
