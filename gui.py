@@ -111,7 +111,12 @@ def gen_pod(window, values):
         counter = 0
         for value in arr_toAdd:
             #print(value)
-            stripped = int(value.split(':')[0])
+            try:
+                stripped = int(value.split(':')[0])
+            except ValueError:
+                hasError = True
+                window['error_message'].update('Invalid Schedule formatting. Please input in the format specified')
+                return 'SCHEDULE_ERROR\n'
             #print(f"stripped time to slot: {stripped}")
             counter_2 = 0
             for x in arr_added:
@@ -195,7 +200,7 @@ def gui():
         [sg.Text('Add Event:')],
         [sg.Text('Event Name:')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventName')],
-        [sg.Text('Time:')],
+        [sg.Text('Time: (ex. 0700)')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventTime')],
         [sg.Text('Location')],
         [sg.In(size=(25,1), enable_events=True, key='inp_eventLocation')],
